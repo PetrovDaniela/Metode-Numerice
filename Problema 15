@@ -1,0 +1,26 @@
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void main() {
+double T,h[100];
+int i,pasi,n;
+float x[100],f[100];
+printf(&quot;n=&quot;);
+scanf(&quot;%d&quot;,&amp;n);
+for (i=0;i&lt;=n;i++)
+{
+printf(&quot;x[%d]=&quot;,i);
+scanf(&quot;%f&quot;,&amp;x[i]);
+}
+for (i=0;i&lt;=n;i++)
+{
+printf(&quot;f[%d]=&quot;,i);
+scanf(&quot;%f&quot;,&amp;f[i]);
+}
+for (i=1;i&lt;=n;i++)
+h[i]=x[i]-x[i-1];
+T=0;
+for (i=1;i&lt;=n;i++)
+T = T+(h[i]/2)*(f[i-1]+f[i]);
+printf(&quot;\nValoarea integralei este %.11lf&quot;,T);
+}
