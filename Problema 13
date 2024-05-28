@@ -1,0 +1,36 @@
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+double f(double x) {
+return x*log(x);
+}
+void main() {
+double a,b,ep,T,Tnew,s,h,n;
+int i,pasi;
+printf(&quot;a= &quot;);
+scanf(&quot;%lf&quot;,&amp;a);
+printf(&quot;b= &quot;);
+scanf(&quot;%lf&quot;,&amp;b);
+printf(&quot;ep= &quot;);
+scanf(&quot;%lf&quot;,&amp;ep);
+n = 1;
+T = (f(a)+f(b)) * (b-a)/2;
+pasi=1;
+do{
+pasi++;
+n = 2*n;
+
+h = (b
+-a)/n;
+Tnew =
+T;
+s = 0;
+for (i = 1;i&lt;=n
+-1;i++)
+s+=f(a+i*h);
+T = (f(a)+2*s+f(b))*h/2;
+}
+while (fabs(T-Tnew)&gt;ep);
+printf(&quot;\nValoarea integralei, obtinuta cu precizia %lf este %.11lfin %d
+pasi&quot;,ep,T,pasi);
+}
