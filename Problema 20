@@ -1,0 +1,51 @@
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+float f(float x, float y)
+{
+return(x/(1+y*y));
+}
+int main()
+{
+
+int n,i,j;
+float x[100],y[100],S[100],P[100], t[100], l1[100],l2[100],l3[100],I,xg,yg,Sx,Sy;
+printf(&quot;n=&quot;);
+scanf(&quot;%d&quot;,&amp;n);
+for (i=1;i&lt;=n;i++)
+{
+printf(&quot;x[%d]=&quot;,i);
+scanf(&quot;%f&quot;,&amp;x[i]);
+}
+for (i=1;i&lt;=n;i++)
+{
+printf(&quot;y[%d]=&quot;,i);
+scanf(&quot;%f&quot;,&amp;y[i]);
+}
+Sx=0;
+for (i=1;i&lt;=n;i++)
+Sx=Sx+x[i];
+Sy=0;
+for (i=1;i&lt;=n;i++)
+Sy=Sy+y[i];
+xg=Sx/n;
+yg=Sy/n;
+x[n+1]=x[1];
+y[n+1]=y[1];
+for (i=1;i&lt;=n;i++)
+{
+l1[i]=sqrt((x[i]-xg)*(x[i]-xg)+(y[i]-yg)*(y[i]-yg));
+l2[i]=sqrt((x[i+1]-xg)*(x[i+1]-xg)+(y[i+1]-yg)*(y[i+1]-yg));
+
+l3[i]=sqrt((x[i+1]-x[i])*(x[i+1]-x[i])+(y[i+1]-y[i])*(y[i+1]-y[i]));
+P[i]=(l1[i]+l2[i]+l3[i])/2;
+S[i]=sqrt(P[i]*(P[i]-l1[i])*(P[i]-l2[i])*(P[i]-l3[i]));
+}
+for (i=1;i&lt;=n;i++)
+t[i]=S[i]/12*(f(x[i],y[i])+f(xg,yg)+f(x[i+1],y[i+1])+9*f(((x[i]+xg+x[i+1])/3),((y[i]+yg+y[i+1]
+)/3)));
+I=0;
+for (i=1;i&lt;=n;i++)
+I=I+t[i];
+printf(&quot;Valoarea aproximata a functiei este %f&quot;, I);
+}
