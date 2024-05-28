@@ -1,0 +1,44 @@
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int i,j,det,n,a[101][101],k,aux;
+int main()
+{
+det=1;
+scanf(&quot;%d&quot;,&amp;n);
+for (i=1;i&lt;=n;i++)
+for (j=1;j&lt;=n;j++)
+{
+printf(&quot;a[%d][%d]=&quot;,i,j);
+scanf(&quot;%d&quot;,&amp;a[i][j]);
+}
+for(k=1;k&lt;=n-1;k++)
+{
+if(a[k][k]==0)
+{
+i=k+1;
+while(i&lt;=n &amp;&amp; a[i][k]==0)
+
+i=i+1;
+if(i&gt;n)
+{
+printf(&quot;dar este 0&quot;);
+exit;
+}
+for(j=1;j&lt;=n;j++)
+{
+aux=a[k][j];
+a[k][j]=a[i][j];
+a[i][j]=aux;
+}
+det=-det;
+}
+for(i=1;i&lt;=n-k-1;i++)
+det=det*a[k][k];
+for(i=k+1;i&lt;=n;i++)
+for(j=k+1;j&lt;=n;j++)
+a[i][j]=a[i][j]*a[k][k]-a[i][k]*a[k][j];
+}
+det=a[n][n]/det;
+printf(&quot;%d&quot;,det);
+}
