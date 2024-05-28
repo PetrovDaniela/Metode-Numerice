@@ -1,0 +1,45 @@
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+int m, n,i,j,k;
+float x[100],f[100],z[10],d[100][100],Pol,S,P;
+printf(&quot;n=&quot;);
+
+scanf(&quot;%d&quot;,&amp;n);
+printf(&quot;m=&quot;);
+scanf(&quot;%d&quot;,&amp;m);
+for (i=0;i&lt;=n;i++){
+printf(&quot;x[%d]=&quot;,i);
+scanf(&quot;%f&quot;,&amp;x[i]);}
+for (i=0;i&lt;=n;i++){
+printf(&quot;f[%d]=&quot;,i);
+scanf(&quot;%f&quot;,&amp;f[i]);}
+for (i=1;i&lt;=m;i++){
+printf(&quot;z[%d]=&quot;,i);
+scanf(&quot;%f&quot;,&amp;z[i]);}
+for (i=0;i&lt;=n;i++)
+d[i][0] = f[i];
+for (j=1;j&lt;=n;j++){
+for (i=0;i&lt;=n-j;i++)
+d[i][j]=(d[i][j-1]-d[i+1][j-1])/(x[i]-x[i+j]);}
+if(z[i]&gt;x[0] &amp;&amp; z[i]&lt;x[n])
+{
+for (i=1;i&lt;=m;i++)
+{
+Pol = f [0];
+S = 0;
+for (j=1;j&lt;=n;j++)
+{ P = 1;
+for (k=0;k&lt;=j-1;k++)
+P = P * (z[i] - x[k]) ;
+
+S = S + d[0][j] *P;
+}
+Pol = Pol + S;
+printf(&quot;\n valoarea aproximata a functiei f in %f este %f&quot;,z,Pol);
+}
+}
+else printf(&quot;Punctul nu apartine intervalului&quot;);
+}
