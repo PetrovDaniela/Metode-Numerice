@@ -1,5 +1,5 @@
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+#include <stdio>
+#include <stdlib>
 
 double f(double x) {
 return x*log(x);
